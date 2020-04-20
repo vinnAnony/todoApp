@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}To-Do List | Edit Item{% endblock %}
+
+{% block content %}
+
+{% if item %}
+	<div class="col-md-5">
+		<form method="POST">
+			{% csrf_token%}
+		  <div class="form-group">
+		    <label for="listItem">To-Do Item</label>
+		    <input type="text" class="form-control" placeholder="{{item.item}}" name="item">
+		    <small id="emailHelp" class="form-text text-muted">You can edit the current item here</small>
+		  </div>
+		  <input type="hidden" value="{{item.completed}}" name="completed">
+		  <button type="submit" class="btn btn-primary">Edit</button>
+		</form>
+	</div>
+{% endif %}
+
+
+{% endblock %}
